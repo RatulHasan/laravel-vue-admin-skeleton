@@ -1,7 +1,9 @@
 <script>
 import { PolarArea } from 'vue-chartjs'
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
 
-export default PolarArea.extend({
+export default {
+  extends: PolarArea,
   mounted () {
     this.renderChart({
       labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
@@ -25,7 +27,22 @@ export default PolarArea.extend({
           data: [28, 48, 40, 19, 96, 27, 100]
         }
       ]
-    }, {responsive: true, maintainAspectRatio: false})
+    }, {
+      responsive: true,
+      maintainAspectRatio: false,
+      tooltips: {
+        enabled: false,
+        custom: CustomTooltips,
+        intersect: true,
+        mode: 'index',
+        position: 'nearest',
+        callbacks: {
+          labelColor: function (tooltipItem, chart) {
+            return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].backgroundColor }
+          }
+        }
+      }
+    })
   }
-})
+}
 </script>

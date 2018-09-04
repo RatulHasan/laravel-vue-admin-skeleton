@@ -1,7 +1,8 @@
 <script>
 import { Doughnut } from 'vue-chartjs'
 
-export default Doughnut.extend({
+export default {
+  extends: Doughnut,
   mounted () {
     this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
@@ -16,7 +17,7 @@ export default Doughnut.extend({
           data: [40, 20, 80, 10]
         }
       ]
-    }, {responsive: true, maintainAspectRatio: false})
+    }, {responsive: true, maintainAspectRatio: true})
   }
-})
+}
 </script>

@@ -1,90 +1,40 @@
 <template>
   <div class="animated fadeIn">
-    <div class="card-columns cols-2">
-      <div class="card">
-        <div class="card-header">
-          Line Chart
-          <div class="card-actions">
-            <a href="http://www.chartjs.org"><small class="text-muted">docs</small></a>
-          </div>
+    <b-card-group columns class="card-columns">
+      <b-card header="Line Chart">
+        <div class="chart-wrapper">
+          <line-example chartId="chart-line-01"/>
         </div>
-        <div class="card-block">
-          <div class="chart-wrapper">
-            <line-example/>
-          </div>
+      </b-card>
+      <b-card header="Bar Chart">
+        <div class="chart-wrapper">
+          <bar-example chartId="chart-bar-01"/>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Bar Chart
-          <div class="card-actions">
-            <a href="http://www.chartjs.org"><small class="text-muted">docs</small></a>
-          </div>
+      </b-card>
+      <b-card header="Doughnut Chart">
+        <div class="chart-wrapper">
+          <doughnut-example chartId="chart-doughnut-01"/>
         </div>
-        <div class="card-block">
-          <div class="chart-wrapper">
-            <bar-example/>
-          </div>
+      </b-card>
+      <b-card header="Radar Chart">
+        <div class="chart-wrapper">
+          <radar-example chartId="chart-radar-01"/>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Doughnut Chart
-          <div class="card-actions">
-            <a href="http://www.chartjs.org"><small class="text-muted">docs</small></a>
-          </div>
+      </b-card>
+      <b-card header="Pie Chart">
+        <div class="chart-wrapper">
+          <pie-example chartId="chart-pie-01"/>
         </div>
-        <div class="card-block">
-          <div class="chart-wrapper">
-            <doughnut-example/>
-          </div>
+      </b-card>
+      <b-card header="Polar Area Chart">
+        <div class="chart-wrapper">
+          <polar-area-example chartId="chart-polar-area-01"/>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Radar Chart
-          <div class="card-actions">
-            <a href="http://www.chartjs.org"><small class="text-muted">docs</small></a>
-          </div>
-        </div>
-        <div class="card-block">
-          <div class="chart-wrapper">
-            <radar-example/>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Pie Chart
-          <div class="card-actions">
-            <a href="http://www.chartjs.org"><small class="text-muted">docs</small></a>
-          </div>
-        </div>
-        <div class="card-block">
-          <div class="chart-wrapper">
-            <pie-example/>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Polar Area Chart
-          <div class="card-actions">
-            <a href="http://www.chartjs.org"><small class="text-muted">docs</small></a>
-          </div>
-        </div>
-        <div class="card-block">
-          <div class="chart-wrapper">
-            <polar-area-example/>
-          </div>
-        </div>
-      </div>
-    </div>
+      </b-card>
+    </b-card-group>
   </div>
 </template>
-
 <script>
-
 import BarExample from './charts/BarExample'
 import LineExample from './charts/LineExample'
 import DoughnutExample from './charts/DoughnutExample'

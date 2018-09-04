@@ -1,26 +1,52 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
 // Containers
-import Full from '../containers/Full';
+import DefaultContainer from '../containers/DefaultContainer';
 
 // Views
 import Dashboard from '../views/Dashboard';
+
+import Colors from '../views/theme/Colors';
+import Typography from '../views/theme/Typography';
+
 import Charts from '../views/Charts';
 import Widgets from '../views/Widgets';
 
 // Views - Components
-import Buttons from '../views/components/Buttons';
-import SocialButtons from '../views/components/SocialButtons';
-import Cards from '../views/components/Cards';
-import Forms from '../views/components/Forms';
-import Modals from '../views/components/Modals';
-import Switches from '../views/components/Switches';
-import Tables from '../views/components/Tables';
+import Cards from '../views/base/Cards';
+import Forms from '../views/base/Forms';
+import Switches from '../views/base/Switches';
+import Tables from '../views/base/Tables';
+import Tabs from '../views/base/Tabs';
+import Breadcrumbs from '../views/base/Breadcrumbs';
+import Carousels from '../views/base/Carousels';
+import Collapses from '../views/base/Collapses';
+import Jumbotrons from '../views/base/Jumbotrons';
+import ListGroups from '../views/base/ListGroups';
+import Navs from '../views/base/Navs';
+import Navbars from '../views/base/Navbars';
+import Paginations from '../views/base/Paginations';
+import Popovers from '../views/base/Popovers';
+import ProgressBars from '../views/base/ProgressBars';
+import Tooltips from '../views/base/Tooltips';
+
+// Views - Buttons
+import StandardButtons from '../views/buttons/StandardButtons';
+import ButtonGroups from '../views/buttons/ButtonGroups';
+import Dropdowns from '../views/buttons/Dropdowns';
+import BrandButtons from '../views/buttons/BrandButtons';
 
 // Views - Icons
+import Flags from '../views/icons/Flags';
 import FontAwesome from '../views/icons/FontAwesome';
 import SimpleLineIcons from '../views/icons/SimpleLineIcons';
+import CoreUIIcons from '../views/icons/CoreUIIcons';
+
+// Views - Notifications
+import Alerts from '../views/notifications/Alerts';
+import Badges from '../views/notifications/Badges';
+import Modals from '../views/notifications/Modals';
 
 // Views - Pages
 import Page404 from '../views/pages/Page404';
@@ -28,10 +54,14 @@ import Page500 from '../views/pages/Page500';
 import Login from '../views/pages/Login';
 import Register from '../views/pages/Register';
 
-Vue.use(Router);
+// Users
+import Users from '../views/users/Users';
+import User from '../views/users/User';
+
+Vue.use(Router)
 
 export default new Router({
-  mode: 'hash', // hash or hash = Demo is living in GitHub.io, so required!
+  mode: 'hash', // https://router.vuejs.org/api/#mode
   linkActiveClass: 'open active',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
@@ -39,12 +69,32 @@ export default new Router({
       path: '/',
       redirect: '/dashboard',
       name: 'Home',
-      component: Full,
+      component: DefaultContainer,
       children: [
         {
           path: 'dashboard',
           name: 'Dashboard',
           component: Dashboard
+        },
+        {
+          path: 'theme',
+          redirect: '/theme/colors',
+          name: 'Theme',
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: 'colors',
+              name: 'Colors',
+              component: Colors
+            },
+            {
+              path: 'typography',
+              name: 'Typography',
+              component: Typography
+            }
+          ]
         },
         {
           path: 'charts',
@@ -57,23 +107,32 @@ export default new Router({
           component: Widgets
         },
         {
-          path: 'components',
-          redirect: '/components/buttons',
-          name: 'Components',
+          path: 'users',
+          meta: { label: 'Users'},
           component: {
-            render (c) { return c('router-view'); }
+            render (c) { return c('router-view') }
           },
           children: [
             {
-              path: 'buttons',
-              name: 'Buttons',
-              component: Buttons
+              path: '',
+              component: Users,
             },
             {
-              path: 'social-buttons',
-              name: 'Social Buttons',
-              component: SocialButtons
+              path: ':id',
+              meta: { label: 'User Details'},
+              name: 'User',
+              component: User,
             },
+          ]
+        },
+        {
+          path: 'base',
+          redirect: '/base/cards',
+          name: 'Base',
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
             {
               path: 'cards',
               name: 'Cards',
@@ -85,11 +144,6 @@ export default new Router({
               component: Forms
             },
             {
-              path: 'modals',
-              name: 'Modals',
-              component: Modals
-            },
-            {
               path: 'switches',
               name: 'Switches',
               component: Switches
@@ -98,6 +152,96 @@ export default new Router({
               path: 'tables',
               name: 'Tables',
               component: Tables
+            },
+            {
+              path: 'tabs',
+              name: 'Tabs',
+              component: Tabs
+            },
+            {
+              path: 'breadcrumbs',
+              name: 'Breadcrumbs',
+              component: Breadcrumbs
+            },
+            {
+              path: 'carousels',
+              name: 'Carousels',
+              component: Carousels
+            },
+            {
+              path: 'collapses',
+              name: 'Collapses',
+              component: Collapses
+            },
+            {
+              path: 'jumbotrons',
+              name: 'Jumbotrons',
+              component: Jumbotrons
+            },
+            {
+              path: 'list-groups',
+              name: 'List Groups',
+              component: ListGroups
+            },
+            {
+              path: 'navs',
+              name: 'Navs',
+              component: Navs
+            },
+            {
+              path: 'navbars',
+              name: 'Navbars',
+              component: Navbars
+            },
+            {
+              path: 'paginations',
+              name: 'Paginations',
+              component: Paginations
+            },
+            {
+              path: 'popovers',
+              name: 'Popovers',
+              component: Popovers
+            },
+            {
+              path: 'progress-bars',
+              name: 'Progress Bars',
+              component: ProgressBars
+            },
+            {
+              path: 'tooltips',
+              name: 'Tooltips',
+              component: Tooltips
+            }
+          ]
+        },
+        {
+          path: 'buttons',
+          redirect: '/buttons/standard-buttons',
+          name: 'Buttons',
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: 'standard-buttons',
+              name: 'Standard Buttons',
+              component: StandardButtons
+            },
+            {
+              path: 'button-groups',
+              name: 'Button Groups',
+              component: ButtonGroups
+            },
+            {
+              path: 'dropdowns',
+              name: 'Dropdowns',
+              component: Dropdowns
+            },
+            {
+              path: 'brand-buttons',
+              name: 'Brand Buttons',
+              component: BrandButtons
             }
           ]
         },
@@ -106,9 +250,19 @@ export default new Router({
           redirect: '/icons/font-awesome',
           name: 'Icons',
           component: {
-            render (c) { return c('router-view'); }
+            render (c) { return c('router-view') }
           },
           children: [
+            {
+              path: 'coreui-icons',
+              name: 'CoreUI Icons',
+              component: CoreUIIcons
+            },
+            {
+              path: 'flags',
+              name: 'Flags',
+              component: Flags
+            },
             {
               path: 'font-awesome',
               name: 'Font Awesome',
@@ -120,15 +274,40 @@ export default new Router({
               component: SimpleLineIcons
             }
           ]
+        },
+        {
+          path: 'notifications',
+          redirect: '/notifications/alerts',
+          name: 'Notifications',
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: 'alerts',
+              name: 'Alerts',
+              component: Alerts
+            },
+            {
+              path: 'badges',
+              name: 'Badges',
+              component: Badges
+            },
+            {
+              path: 'modals',
+              name: 'Modals',
+              component: Modals
+            }
+          ]
         }
       ]
     },
     {
       path: '/pages',
-      redirect: '/pages/p404',
+      redirect: '/pages/404',
       name: 'Pages',
       component: {
-        render (c) { return c('router-view'); }
+        render (c) { return c('router-view') }
       },
       children: [
         {
@@ -154,4 +333,4 @@ export default new Router({
       ]
     }
   ]
-});
+})
