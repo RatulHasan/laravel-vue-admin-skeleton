@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+
+// This is for refresh page without NotFoundHttpException
+
+Route::get('/{any}', function () {
     return view('welcome');
-});
+})->where('any', '.*');

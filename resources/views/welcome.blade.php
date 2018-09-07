@@ -7,6 +7,8 @@
 
         <title>Laravel - CoreUI Example</title>
 
+        <base href="{{ url('/') }}" />
+
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <script>
