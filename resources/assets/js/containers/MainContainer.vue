@@ -50,11 +50,11 @@
     <TheFooter>
       <!--footer-->
       <div>
-        <a href="https://besofty.com">BeSofty</a>
+        <span class="mr-1">Download</span>
+        <a href="https://github.com/RatulHasan/laravel-vue-admin-skeleton">Admin template for Laravel & Vue</a>
       </div>
       <div class="ml-auto">
-        <span class="mr-1">Download</span>
-        <a href="https://github.com/RatulHasan/laravel-vue-admin-skeleton">CoreUI for Laravel & Vue</a>
+        <a href="https://besofty.com" target="_blank">BeSofty Software Ltd.</a>
       </div>
     </TheFooter>
   </div>
