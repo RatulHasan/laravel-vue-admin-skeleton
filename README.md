@@ -19,7 +19,7 @@ $ npm install
 ## Usage
 
 ``` bash
-# serve with hot reload at localhost:8000
+# serve with reload at localhost:8000
 php artisan serve
 
 # serve with hot reload at localhost:8000
