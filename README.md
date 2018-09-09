@@ -22,6 +22,9 @@ $ npm install
 # serve with hot reload at localhost:8000
 php artisan serve
 
+# serve with hot reload at localhost:8000
+php artisan hot
+
 # compile project with npm
 npm run watch
 
